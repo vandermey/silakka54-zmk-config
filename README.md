@@ -1,16 +1,18 @@
 # Silakka54 Wireless ZMK Config
 
-ZMK firmware configuration for the Silakka54 wireless split keyboard (Lily58 compatible) with SuperMini nRF52840.
+ZMK firmware configuration for the Silakka54 wireless 54-key split keyboard with SuperMini nRF52840.
+
+The Silakka54 is based on the [Lily58](https://github.com/kata0510/Lily58) layout, but with 54 keys instead of 58 (no encoder keys and reduced thumb cluster).
 
 ## Building Firmware
 
 ### Via GitHub Actions (recommended)
 
 1. Fork this repository to your own GitHub account
-2. Optionally modify `config/lily58.keymap` to your preferences
+2. Optionally modify `config/silakka54.keymap` to your preferences
 3. Push your changes to GitHub
 4. Go to the **Actions** tab in your repository
-5. Download the `firmware.zip` artifact from the latest build
+5. Download the `silakka54-wireless-firmware.zip` artifact from the latest build
 
 ### Building Locally
 
@@ -33,8 +35,8 @@ See the [ZMK documentation](https://zmk.dev/docs/development/setup) for local se
 3. The board will appear as a USB storage device named `NICENANO`
 
 4. **Copy the correct `.uf2` file** to the `NICENANO` drive:
-   - `lily58_left-nice_nano_v2-zmk.uf2` for the **left** half
-   - `lily58_right-nice_nano_v2-zmk.uf2` for the **right** half
+   - `silakka54_left-nice_nano_v2-zmk.uf2` for the **left** half
+   - `silakka54_right-nice_nano_v2-zmk.uf2` for the **right** half
 
 5. The board will automatically restart after copying
 
@@ -69,7 +71,7 @@ This firmware has ZMK Studio enabled. This allows you to modify your keymap with
 
 ## Modifying the Keymap
 
-The keymap is located in `config/lily58.keymap`. After making changes:
+The keymap is located in `config/silakka54.keymap`. After making changes:
 
 1. Commit and push to GitHub
 2. Wait for the GitHub Action to complete
@@ -87,17 +89,23 @@ The firmware supports 5 Bluetooth profiles (BT1-BT5). Switch profiles via the Lo
 ```
 silakka54-zmk-config/
 ├── config/
-│   ├── lily58.keymap    # Keymap configuration
-│   ├── lily58.conf      # Firmware settings
-│   └── west.yml         # ZMK dependencies
-├── build.yaml           # Build matrix
+│   ├── silakka54.keymap              # Keymap configuration
+│   ├── silakka54.conf                # Firmware settings
+│   ├── west.yml                      # ZMK dependencies
+│   └── boards/shields/silakka54/     # Custom shield definition
+│       ├── Kconfig.shield
+│       ├── Kconfig.defconfig
+│       ├── silakka54.zmk.yml
+│       ├── silakka54_left.overlay
+│       └── silakka54_right.overlay
+├── build.yaml                        # Build matrix
 └── .github/
     └── workflows/
-        └── build.yml    # GitHub Actions workflow
+        └── build.yml                 # GitHub Actions workflow
 ```
 
 ## Links
 
 - [ZMK Firmware](https://zmk.dev/)
 - [ZMK Studio](https://zmk.studio)
-- [Lily58 Keyboard](https://github.com/kata0510/Lily58)
+- [Lily58 Keyboard](https://github.com/kata0510/Lily58) (base layout)

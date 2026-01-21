@@ -1,0 +1,16 @@
+if SHIELD_SILAKKA54_LEFT
+
+config ZMK_KEYBOARD_NAME
+    default "Silakka54"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_SILAKKA54_LEFT || SHIELD_SILAKKA54_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif

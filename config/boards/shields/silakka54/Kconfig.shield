@@ -1,0 +1,5 @@
+config SHIELD_SILAKKA54_LEFT
+    def_bool $(shields_list_contains,silakka54_left)
+
+config SHIELD_SILAKKA54_RIGHT
+    def_bool $(shields_list_contains,silakka54_right)
